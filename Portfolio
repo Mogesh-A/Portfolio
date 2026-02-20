@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mogesh A — Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <style>
+      :root {
+        --bg: #0f1724;
+        --card: #0b1220;
+        --muted: #98a0b3;
+        --accent: #4fc3f7;
+        --glass: rgba(255, 255, 255, 0.04);
+        --radius: 14px;
+      }
+      /* --- Page styling (optional) --- */
+      :root {
+        --bg: radial-gradient(
+          1200px 600px at 20% 10%,
+          #f1f5f9 0%,
+          #e2e8f0 40%,
+          #cbd5e1 100%
+        );
+        --ink: #0f172a;
+        --accent: #6366f1;
+        --cursor-width: 4px;
+        --font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+
+        /* Typing config */
+        --type-speed: 60ms; /* time between letters */
+        --erase-speed: 36ms; /* time between backspaces */
+        --hold-time: 1200ms; /* pause when a word/phrase is complete */
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Inter, system-ui, sans-serif;
+        background: linear-gradient(180deg, #071022 0%, #0d1320 100%);
+        color: #e6eef7;
+        line-height: 1.5;
+      }
+
+      /* header */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 32px;
+        position: sticky;
+        top: 0;
+        background: rgba(15, 23, 36, 0.9);
+        backdrop-filter: blur(12px);
+        z-index: 1000;
+      }
+      header h1 {
+        font-size: 1.4rem;
+        color: var(--accent);
+        letter-spacing: 1px;
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 18px;
+      }
+      nav ul li {
+        position: relative;
+      }
+      nav ul a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 25px;
+        margin: 15px;
+      }
+      nav ul a:hover {
+        color: var(--accent);
+      }
+      nav ul li span {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: -22px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111827;
+        color: #fff;
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        transition: opacity 0.2s;
+        white-space: nowrap;
+      }
+      nav ul li:hover span {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* wrapper */
+      .wrap {
+        max-width: 1100px;
+        margin: 0 200px;
+        padding: 32px;
+      }
+
+      .card {
+        background: linear-gradient(180deg, var(--glass), transparent);
+        border-radius: var(--radius);
+        padding: 22px;
+        margin-bottom: 24px;
+        width: 1200px;
+        text-align: center;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        justify-content: center;
+      }
+      h2 {
+        margin-bottom: 12px;
+        color: #f7f7f7;
+        font-size: 30px;
+      }
+      /* photo */
+      #photo {
+        margin-top: 50px;
+        margin-left: 235px;
+        display: flex;
+      }
+      #photo .con {
+        border-color: #4fc3f7;
+        color: white;
+        width: 200px;
+        height: 40px;
+        border-radius: 50px;
+        background: linear-gradient(
+          355deg,
+          rgba(13, 137, 186, 1) 0%,
+          rgba(27, 181, 242, 1) 2%,
+          rgba(20, 12, 28, 1) 50%,
+          rgba(43, 132, 227, 1) 98%,
+          rgba(101, 83, 237, 1) 100%
+        );
+      }
+
+      #photo img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-left: 200px;
+        margin-top: 50px;
+        margin-right: 50px;
+      }
+      #photo h1 strong {
+        color: #4fc3f7;
+        font-size: 50px;
+      }
+      #photo h1 {
+        font-size: 50px;
+        font-style: italic;
+        margin-top: 20px;
+      }
+
+      #photo .type-line {
+        font-size: 40px;
+        line-height: 1.2;
+        font-weight: 150px;
+        letter-spacing: 0.3px;
+        color: white;
+        position: relative;
+        display: inline-block;
+        min-height: 1.2em;
+        font-style: italic;
+      }
+      #photo .controls button {
+        background: #0f1724;
+        color: white;
+        border: 5px;
+        border-color: #cbd5e1;
+      }
+
+      /* about */
+      #about p {
+        color: #fff;
+        margin-bottom: 12px;
+        font-size: 20px;
+        text-align: justify;
+      }
+
+      /* skills */
+      .skills-grid {
+        display: block;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 14px;
+      }
+      .skill {
+        padding: 15px;
+        border-radius: 10px;
+        background: rgba(26, 2, 2, 0);
+        margin-bottom: 20px;
+      }
+      .skill .bar {
+        height: 8px;
+        background: rgba(11, 0, 0, 0.244);
+        border-radius: 6px;
+        overflow: hidden;
+        margin-top: 6px;
+      }
+      .skill .bar i {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), #7ef5d4);
+      }
+
+      /* projects */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      #projectS {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin-left: 300px;
+      }
+      .project img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+      .project .content {
+        padding: 12px;
+      }
+      .project .title {
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .project .meta {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      /* contact */
+      #contact {
+        display: block;
+      }
+      .ov {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        border-radius: 20px;
+        display: inline;
+      }
+      #contact div h4 {
+        color: #6366f1;
+      }
+      #contact .go {
+        margin-bottom: 80px;
+        display: inline-block;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        padding: 18px;
+        font-size: 0.85rem;
+      }
+      .contact-section {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        background: #0f1724;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .contact-section h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .contact-section input,
+      .contact-section textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+      .contact-section textarea {
+        resize: none;
+        height: 120px;
+      }
+      .contact-section button {
+        width: 100%;
+        padding: 12px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .contact-section button:hover {
+        background: #45a049;
+      }
+
+      @media (max-width: 700px) {
+        header h1 {
+          font-size: 1.1rem;
+        }
+        nav ul a {
+          font-size: 1rem;
+        }
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .hint {
+        font-size: 0.9rem;
+        color: #475569;
+        margin-top: 1rem;
+      }
+      code {
+        background: #f1f5f9;
+        padding: 0.15rem 0.35rem;
+        border-radius: 6px;
+      }
+
+      .controls {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+
+      }
+      .btn {
+        border: 1px solid #cbd5e1;
+        background: #fff;
+        border-radius: 999px;
+        padding: 0.55rem 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-left: 300px;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .ov {
+        width: 50px;
+        height: 50px;
+      }
+      /* MEDIA QUERIES */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        #photo {
+          flex-direction: column;
+        }
+
+        #photo img {
+          margin: 0 auto;
+        }
+
+        #photo h1 {
+          font-size: 1.8rem;
+        }
+
+        .type-line {
+          font-size: 1.2rem;
+        }
+
+        .wrap {
+          margin: 0 10px;
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <h1>Portfolio</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="#projects"><i class="fa-solid fa-diagram-project"></i></a
+            ><span>Projects</span>
+          </li>
+          <li>
+            <a href="#skills"><i class="fa-solid fa-code"></i></a
+            ><span>Skills</span>
+          </li>
+          <li>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i> </a
+            ><span>Contact</span>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/mogesha/" target="_blank"
+              ><i class="fa-brands fa-linkedin"></i> </a
+            ><span>LinkedIn</span>
+          </li>
+
+          <li>
+            <a href="https://github.com/Mogesh-A" target="_blank"
+              ><i class="fa-brands fa-github"></i> </a
+            ><span>GitHub</span>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- photo -->
+    <section class="card" id="photo">
+      <div class="ki">
+        <img src="Screenshot 2025-06-25 204400-Pica.jpg" alt="myself" />
+      </div>
+      <div class="hm">
+        <button class="con"><h3>Hey There</h3></button>
+        <h1> I am <strong> MOGESH</strong></h1>
+        <div
+          id="typewriter"
+          class="type-line"
+          data-phrases='["Web Developer","Python Developer","Data Analyst","Graphic Designer"]'
+        >
+          <span class="text"></span><span class="caret"></span>
+        </div>
+
+         <div class="controls">
+      <button class="btn" id="pauseBtn" type="button">Pause</button>
+      <button class="btn" id="resumeBtn" type="button">Resume</button>
+      <button class="btn" id="skipBtn" type="button">Skip →</button>
+    </div>
+      </div>
+    </section>
+    <div class="wrap">
+      <!-- about -->
+      <section class="card" id="about">
+        <h2>About Me</h2>
+        <p>
+          I am a college student with a strong passion for technology and
+          software development. My main focus on Web 
+          <br />development, where I enjoy building applications that are
+          efficient, responsive, and user-friendly. I love solving<br />
+          real-world problems through code and continuously improving my
+          technical skills.<br /><br />
+        </p>
+        <p>
+          As a full stack developer, I have experience working with both
+          frontend and backend technologies. I pay special attention to<br />
+          clean design, smooth functionality, and responsiveness, ensuring a
+          better user experience. Creating practical solutions through <br />web
+          development excites me, and I am always eager to take on new
+          challenges.<br /><br />
+        </p>
+        <p>
+          In addition to development, I have explored data science and gained a
+          basic understanding of data analysis and insights. <br />This
+          knowledge helps me think critically, understand patterns, and add
+          value to projects. I believe combining development<br />
+          with data science makes me more versatile and open to wider
+          opportunities.<br /><br />
+        </p>
+        <p>
+          Currently, I am seeking job opportunities where I can apply my skills,
+          learn from industry experts, and contribute to impactful
+          <br />projects. My goal is to grow as a professional, adapt to new
+          technologies, and work collaboratively in a team. With dedication
+          <br />and curiosity, I aim to make a difference.<br /><br /><br />
+        </p>
+      </section>
+
+      <!-- skills -->
+      <section class="card" id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill">
+            <div>Python (75%)</div>
+            <div class="bar"><i style="width: 75%"></i></div>
+          </div>
+          <div class="skill">
+            <div>C (80%)</div>
+            <div class="bar"><i style="width: 80%"></i></div>
+          </div>
+          <div class="skill">
+            <div>C++ (50%)</div>
+            <div class="bar"><i style="width: 50%"></i></div>
+          </div>
+          <div class="skill">
+            <div>Java (40%)</div>
+            <div class="bar"><i style="width: 40%"></i></div>
+          </div>
+          <div class="skill">
+            <div>HTML (80%)</div>
+            <div class="bar"><i style="width: 80%"></i></div>
+          </div>
+          <div class="skill">
+            <div>CSS (70%)</div>
+            <div class="bar"><i style="width: 70%"></i></div>
+          </div>
+          <div class="skill">
+            <div>JavaScript (60%)</div>
+            <div class="bar"><i style="width: 60%"></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="education">
+        <div>
+          <h2>Education</h2>
+          <h2>Computer Science Engineering</h2>
+          <h3 style="color: #4fc3f7">Agni College of technology</h3>
+          <h4>2023 - present</h4>
+        </div>
+      </section>
+      <!-- projects -->
+      <section class="card" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project">
+            <img src="caj.png" alt="" />
+            <div class="content">
+              <div class="title">Creative Calculator</div>
+              <div class="meta">
+                Feature-rich calculator with extended operations and a sleek UI.
+              </div>
+               <a href="https://github.com/Mogesh-A/Calculator-/blob/main/My%20Calcy" target="_blank">Source Code</a>
+            </div>
+          </div>
+          <div class="project">
+            <img src="https://source.unsplash.com/400x300/?website" alt="" />
+            <div class="content">
+              <div class="title">Nexxila Frontend</div>
+              <div class="meta">
+                Responsive frontend for Nexxila Technologies built with modern
+                design principles.
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <img src="https://source.unsplash.com/400x300/?data" alt="" />
+            <div class="content">
+              <div class="title">Data Dashboard</div>
+              <div class="meta">
+                Interactive dashboard for visualizing datasets using charts.
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <img src="https://source.unsplash.com/400x300/?app" alt="" />
+            <div class="content">
+              <div class="title">Student Helper App</div>
+              <div class="meta">
+                Mobile-friendly app to manage notes, reminders, and schedules.
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <img src="https://source.unsplash.com/400x300/?photo" alt="" />
+            <div class="content">
+              <div class="title">Photo Editor Toolkit</div>
+              <div class="meta">
+                Basic photo editing tool with filters and adjustments.
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <img src="https://source.unsplash.com/400x300/?ai" alt="" />
+            <div class="content">
+              <div class="title">AI Chatbot</div>
+              <div class="meta">
+                Simple chatbot using Python to handle FAQs and responses.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- contact -->
+      <section class="card contact-box" id="contact">
+        <h2>Contact</h2>
+        <br />
+        <div style="display: flex; justify-content: space-around">
+          <div class="contact point">
+            <div class="go">
+              <button>
+                <img
+                  class="ov"
+                  src="data:image/png;base64,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"
+                />
+              </button>
+              <h3>Location</h3>
+              <a
+                href="https://www.google.com/maps/place/3rd+St,+Siddharth+Nagar,+Vellakkal,+Chennai,+Tamil+Nadu+600129/@12.933727,80.1717778,17z/data=!3m1!4b1!4m6!3m5!1s0x3a525e8f03b53af9:0x5b47c8c4ebbc84a2!8m2!3d12.933727!4d80.1743527!16s%2Fg%2F11g622n7j6?authuser=0&entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+              >
+                <h4>Kovilambakkam,Madavakkam</h4></a
+              >
+            </div>
+            <br />
+            <div class="go">
+              <button>
+                <img
+                  class="ov"
+                  src="https://static.vecteezy.com/system/resources/thumbnails/006/827/459/small_2x/email-icon-sign-symbol-logo-vector.jpg"
+                />
+              </button>
+              <h3>E Mail</h3>
+              <h4>mogesh1766@gmail.com</h4>
+            </div>
+            <br />
+            <div class="go">
+              <button>
+                <img
+                  class="ov"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi6HhUIdMWElmiaNngECzUQjdf5Szx0KWR5Q&s"
+                />
+              </button>
+              <h3>Phone</h3>
+              <h4>9884909452</h4>
+            </div>
+            <br />
+          </div>
+          <div class="contact-section">
+            <h2 style="color: white">Contact Me</h2>
+            <form id="contact-form">
+              <input
+                type="text"
+                name="from_name"
+                placeholder="Your Name"
+                required
+              />
+              <input
+                type="email"
+                name="from_email"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Your  Email id and Message..."
+                required
+              ></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>Made with ❤️ by Mogesh A • © 2026</p>
+      <a href="https://github.com/Mogesh-A/Calculator-/blob/main/My%20Calcy" target="_blank">github</a>
+    </footer>
+    <script>
+       const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+      const $root = document.documentElement;
+      const ms = (v) => parseInt(getComputedStyle($root).getPropertyValue(v));
+
+      const el = document.getElementById("typewriter");
+      const out = el.querySelector(".text");
+
+      /** Gather phrases from data attribute */
+      let phrases;
+      try {
+        phrases = JSON.parse(el.getAttribute("data-phrases"));
+      } catch (e) {
+        phrases = ["Add phrases via data-phrases JSON array."]; // fallback
+      }
+
+      // Controls
+      let paused = false;
+      let skipRequested = false;
+
+      document
+        .getElementById("pauseBtn")
+        .addEventListener("click", () => (paused = true));
+      document
+        .getElementById("resumeBtn")
+        .addEventListener("click", () => (paused = false));
+      document
+        .getElementById("skipBtn")
+        .addEventListener("click", () => (skipRequested = true));
+
+      const waitUntilResumed = async () => {
+        while (paused) {
+          await sleep(100);
+        }
+      };
+
+      const type = async (text) => {
+        for (let i = 0; i <= text.length; i++) {
+          await waitUntilResumed();
+          if (skipRequested) break;
+          out.textContent = text.slice(0, i);
+          await sleep(ms("--type-speed"));
+        }
+      };
+
+      const erase = async () => {
+        const text = out.textContent;
+        for (let i = text.length; i >= 0; i--) {
+          await waitUntilResumed();
+          if (skipRequested) break;
+          out.textContent = text.slice(0, i);
+          await sleep(ms("--erase-speed"));
+        }
+      };
+
+      const loop = async () => {
+        let i = 0;
+        while (true) {
+          const phrase = phrases[i % phrases.length];
+          skipRequested = false;
+          await type(phrase);
+          if (!skipRequested) await sleep(ms("--hold-time"));
+          await erase();
+          i++;
+        }
+      };
+
+      // Kick off once DOM is ready
+      window.addEventListener("DOMContentLoaded", loop);
+      (function () {
+        emailjs.init("zwfqVHbfYcwAEsxlY"); // 🔹 Replace with your EmailJS Public Key
+      })();
+
+      // Handle form submission
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          emailjs.sendForm("service_3kks5tw", "template_t0237td", this).then(
+            function () {
+              alert("✅ Message sent successfully!");
+            },
+            function (error) {
+              alert("❌ Failed to send message: " + JSON.stringify(error));
+            }
+          );
+        });
+    </script>
+  </body>
+</html>
