@@ -1,2 +1,379 @@
-HI to everyone
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartLearn AR</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+    background:#0f172a;
+    overflow-x:hidden;
+}
+
+.card3d{
+    transform-style:preserve-3d;
+    transition:all .4s ease;
+}
+
+.card3d:hover{
+    transform:
+        perspective(1000px)
+        rotateX(8deg)
+        rotateY(-8deg)
+        translateY(-10px);
+}
+
+.glass{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.glow:hover{
+    box-shadow:0 0 25px #8b5cf6;
+}
+
+.float{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+.fade{
+    animation:fade .8s ease;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+</head>
+
+<body class="text-white">
+
+<!-- Header -->
+<header class="sticky top-0 z-50 glass">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+
+        <div class="flex items-center gap-3">
+            <div class="text-3xl">🎓</div>
+            <h1 class="text-xl font-bold">
+                SmartLearn AR
+            </h1>
+        </div>
+
+        <div class="flex gap-3">
+            <button onclick="showAlert('Home')" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-700">
+                Home
+            </button>
+
+            <button onclick="showAlert('Profile')" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700">
+                Profile
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="py-16 text-center fade">
+    <h1 class="text-5xl font-bold mb-4">
+        AI + AR Education App
+    </h1>
+
+    <p class="text-gray-300 text-lg">
+        Learn • Explore • Visualize
+    </p>
+</section>
+
+<!-- Search -->
+<section class="max-w-5xl mx-auto px-5 mb-12">
+    <div class="glass rounded-2xl p-4 flex gap-3">
+        <input
+            id="searchBox"
+            type="text"
+            placeholder="Search lessons..."
+            class="flex-1 bg-transparent outline-none">
+
+        <button
+            onclick="searchLesson()"
+            class="bg-violet-600 px-6 py-2 rounded-xl glow">
+            Search
+        </button>
+    </div>
+</section>
+
+<!-- Subjects -->
+<section class="max-w-6xl mx-auto px-5">
+
+<h2 class="text-3xl font-bold mb-8">
+Subjects
+</h2>
+
+<div class="grid md:grid-cols-4 gap-6">
+
+<div class="card3d glass rounded-3xl p-8 text-center glow">
+<h3 class="text-5xl mb-4">➕</h3>
+<h4 class="font-bold">Mathematics</h4>
+</div>
+
+<div class="card3d glass rounded-3xl p-8 text-center glow">
+<h3 class="text-5xl mb-4">🔬</h3>
+<h4 class="font-bold">Science</h4>
+</div>
+
+<div class="card3d glass rounded-3xl p-8 text-center glow">
+<h3 class="text-5xl mb-4">🌎</h3>
+<h4 class="font-bold">Geography</h4>
+</div>
+
+<div class="card3d glass rounded-3xl p-8 text-center glow">
+<h3 class="text-5xl mb-4">📜</h3>
+<h4 class="font-bold">History</h4>
+</div>
+
+</div>
+</section>
+
+<!-- Lesson Section -->
+<section class="max-w-6xl mx-auto px-5 mt-20">
+
+<div class="glass rounded-3xl p-8 card3d">
+
+<h2 class="text-3xl font-bold mb-4">
+🌞 Solar System
+</h2>
+
+<p class="text-gray-300 mb-6">
+Explore planets, stars and galaxies.
+</p>
+
+<div class="flex flex-wrap gap-4">
+
+<button
+onclick="openLesson()"
+class="bg-violet-600 px-6 py-3 rounded-xl glow">
+Read Lesson
+</button>
+
+<button
+onclick="openAR()"
+class="bg-cyan-600 px-6 py-3 rounded-xl glow">
+AR View
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- AR Preview -->
+<section class="max-w-6xl mx-auto px-5 mt-20">
+
+<div class="glass rounded-3xl p-10 card3d text-center">
+
+<div class="float text-8xl mb-6">
+🪐
+</div>
+
+<h2 class="text-3xl font-bold mb-4">
+AR Visualization
+</h2>
+
+<p class="text-gray-300 mb-8">
+Rotate • Zoom • Explore
+</p>
+
+<button
+onclick="rotatePlanet()"
+class="bg-blue-600 px-8 py-3 rounded-xl glow">
+Rotate Planet
+</button>
+
+<div
+id="planet"
+class="text-8xl mt-8 transition-all duration-700">
+🪐
+</div>
+
+</div>
+
+</section>
+
+<!-- AI Tutor -->
+<section class="max-w-6xl mx-auto px-5 mt-20">
+
+<div class="glass rounded-3xl p-8">
+
+<h2 class="text-3xl font-bold mb-6">
+🤖 AI Tutor
+</h2>
+
+<div id="chatBox"
+class="bg-slate-900 rounded-2xl p-5 h-60 overflow-y-auto mb-4">
+
+<div class="mb-3">
+<b>Student:</b> What is photosynthesis?
+</div>
+
+<div class="text-green-400">
+<b>AI:</b> Photosynthesis is how plants use sunlight to make food.
+</div>
+
+</div>
+
+<div class="flex gap-3">
+
+<input
+id="question"
+type="text"
+placeholder="Ask anything..."
+class="flex-1 bg-slate-800 p-3 rounded-xl outline-none">
+
+<button
+onclick="askAI()"
+class="bg-violet-600 px-6 rounded-xl glow">
+Send
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Quiz -->
+<section class="max-w-6xl mx-auto px-5 mt-20 mb-20">
+
+<div class="glass rounded-3xl p-8 card3d">
+
+<h2 class="text-3xl font-bold mb-8">
+📝 Quiz
+</h2>
+
+<p class="mb-6">
+Which planet is known as the Red Planet?
+</p>
+
+<div class="space-y-3">
+
+<button onclick="checkAnswer(false)"
+class="w-full bg-slate-800 p-4 rounded-xl">
+Earth
+</button>
+
+<button onclick="checkAnswer(true)"
+class="w-full bg-slate-800 p-4 rounded-xl">
+Mars
+</button>
+
+<button onclick="checkAnswer(false)"
+class="w-full bg-slate-800 p-4 rounded-xl">
+Jupiter
+</button>
+
+<button onclick="checkAnswer(false)"
+class="w-full bg-slate-800 p-4 rounded-xl">
+Venus
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+function showAlert(page){
+    alert(page + " page opened");
+}
+
+function searchLesson(){
+    let value =
+    document.getElementById("searchBox").value;
+
+    if(value==""){
+        alert("Enter lesson name");
+    }
+    else{
+        alert("Searching for: " + value);
+    }
+}
+
+function openLesson(){
+    alert("Solar System Lesson Opened");
+}
+
+function openAR(){
+    alert("Launching AR Experience");
+}
+
+let angle = 0;
+
+function rotatePlanet(){
+    angle += 360;
+
+    document.getElementById("planet").style.transform =
+    `rotate(${angle}deg)`;
+}
+
+function askAI(){
+
+    let input =
+    document.getElementById("question");
+
+    let text = input.value;
+
+    if(text=="") return;
+
+    let chat =
+    document.getElementById("chatBox");
+
+    chat.innerHTML += `
+    <div class="mt-4">
+        <b>Student:</b> ${text}
+    </div>
+
+    <div class="text-green-400">
+        <b>AI:</b> I can help you learn about "${text}".
+    </div>
+    `;
+
+    input.value="";
+    chat.scrollTop=chat.scrollHeight;
+}
+
+function checkAnswer(correct){
+
+    if(correct){
+        alert("✅ Correct Answer!");
+    }
+    else{
+        alert("❌ Wrong Answer!");
+    }
+}
+
+</script>
+
+</body>
+</html>
 
