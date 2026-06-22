@@ -119,6 +119,48 @@ body{
         </button>
     </div>
 </section>
+    <section class="max-w-6xl mx-auto mt-16">
+
+<h1 class="text-3xl font-bold mb-8">
+⭐ AI Recommendations
+</h1>
+
+<div id="recommendBox"
+class="grid md:grid-cols-3 gap-6">
+
+<div class="glass p-6 rounded-3xl">
+<h2 class="text-xl font-bold mb-3">
+🌞 Solar System
+</h2>
+
+<p class="text-gray-300">
+Recommended for Science Students
+</p>
+</div>
+
+<div class="glass p-6 rounded-3xl">
+<h2 class="text-xl font-bold mb-3">
+➗ Algebra Basics
+</h2>
+
+<p class="text-gray-300">
+Recommended for Mathematics
+</p>
+</div>
+
+<div class="glass p-6 rounded-3xl">
+<h2 class="text-xl font-bold mb-3">
+🌍 Continents
+</h2>
+
+<p class="text-gray-300">
+Recommended for Geography
+</p>
+</div>
+
+</div>
+
+</section>
 
 <!-- Subjects -->
 <section class="max-w-6xl mx-auto px-5">
@@ -126,27 +168,79 @@ body{
 <h2 class="text-3xl font-bold mb-8">
 Subjects
 </h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-<div class="grid md:grid-cols-4 gap-6">
+<!-- Mathematics -->
+<div class="card3d glass rounded-3xl p-8 glow">
+    <div class="text-5xl mb-4">➕</div>
+    <h2 class="text-xl font-bold mb-3">Mathematics</h2>
 
-<div class="card3d glass rounded-3xl p-8 text-center glow">
-<h3 class="text-5xl mb-4">➕</h3>
-<h4 class="font-bold">Mathematics</h4>
+    <p class="text-gray-300 text-sm mb-5">
+        Learn Algebra, Geometry, Trigonometry,
+        Statistics and Calculus with AI guidance.
+    </p>
+
+    <button onclick="openMath()"
+    class="bg-violet-600 px-5 py-2 rounded-xl">
+        Explore
+    </button>
 </div>
 
-<div class="card3d glass rounded-3xl p-8 text-center glow">
-<h3 class="text-5xl mb-4">🔬</h3>
-<h4 class="font-bold">Science</h4>
+
+<!-- Science -->
+<div class="card3d glass rounded-3xl p-8 glow">
+    <div class="text-5xl mb-4">🔬</div>
+    <h2 class="text-xl font-bold mb-3">Science</h2>
+
+    <p class="text-gray-300 text-sm mb-5">
+        Study Physics, Chemistry and Biology with
+        interactive AR models.
+    </p>
+
+    <button onclick="openScience()"
+    class="bg-blue-600 px-5 py-2 rounded-xl">
+        Explore
+    </button>
 </div>
 
-<div class="card3d glass rounded-3xl p-8 text-center glow">
-<h3 class="text-5xl mb-4">🌎</h3>
-<h4 class="font-bold">Geography</h4>
+
+<!-- Geography -->
+<div class="card3d glass rounded-3xl p-8 glow">
+    <div class="text-5xl mb-4">🌍</div>
+    <h2 class="text-xl font-bold mb-3">
+        Geography
+    </h2>
+
+    <p class="text-gray-300 text-sm mb-5">
+        Learn continents, countries, maps,
+        climates and oceans.
+    </p>
+
+    <button onclick="openGeo()"
+    class="bg-green-600 px-5 py-2 rounded-xl">
+        Explore
+    </button>
 </div>
 
-<div class="card3d glass rounded-3xl p-8 text-center glow">
-<h3 class="text-5xl mb-4">📜</h3>
-<h4 class="font-bold">History</h4>
+
+<!-- History -->
+<div class="card3d glass rounded-3xl p-8 glow">
+    <div class="text-5xl mb-4">📜</div>
+
+    <h2 class="text-xl font-bold mb-3">
+        History
+    </h2>
+
+    <p class="text-gray-300 text-sm mb-5">
+        Explore ancient civilizations,
+        world wars and famous leaders.
+    </p>
+
+    <button onclick="openHistory()"
+    class="bg-red-600 px-5 py-2 rounded-xl">
+        Explore
+    </button>
+
 </div>
 
 </div>
@@ -308,17 +402,42 @@ function showAlert(page){
 }
 
 function searchLesson(){
-    let value =
-    document.getElementById("searchBox").value;
 
-    if(value==""){
-        alert("Enter lesson name");
-    }
-    else{
-        alert("Searching for: " + value);
-    }
+let value =
+document.getElementById("searchBox")
+.value.toLowerCase();
+
+if(value.includes("math")){
+
+alert("🤖 AI Recommendation\n\nAlgebra\nGeometry\nCalculus");
+
 }
 
+else if(value.includes("science")){
+
+alert("🤖 AI Recommendation\n\nSolar System\nAtoms\nHuman Heart");
+
+}
+
+else if(value.includes("history")){
+
+alert("🤖 AI Recommendation\n\nAncient India\nWorld War II");
+
+}
+
+else if(value.includes("geography")){
+
+alert("🤖 AI Recommendation\n\nMaps\nContinents\nClimate");
+
+}
+
+else{
+
+alert("🤖 No exact match.\nShowing popular courses.");
+
+}
+
+}
 function openLesson(){
     alert("Solar System Lesson Opened");
 }
@@ -371,7 +490,21 @@ function checkAnswer(correct){
         alert("❌ Wrong Answer!");
     }
 }
+function openMath(){
+    alert("Mathematics Topics:\n\n• Algebra\n• Geometry\n• Trigonometry\n• Calculus");
+}
 
+function openScience(){
+    alert("Science Topics:\n\n• Physics\n• Chemistry\n• Biology");
+}
+
+function openGeo(){
+    alert("Geography Topics:\n\n• Countries\n• Maps\n• Climate\n• Oceans");
+}
+
+function openHistory(){
+    alert("History Topics:\n\n• Ancient India\n• World Wars\n• Freedom Fighters");
+}
 </script>
 
 </body>
