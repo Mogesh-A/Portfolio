@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile </title>
+    <style>
+        /* Glass Effect */
+.glass{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 8px 30px rgba(0,0,0,.3);
+}
+
+/* 3D Card */
+.card3d{
+    transition:.4s;
+    transform-style:preserve-3d;
+}
+
+.card3d:hover{
+    transform:
+    perspective(1000px)
+    rotateX(5deg)
+    rotateY(-5deg)
+    translateY(-10px);
+
+    box-shadow:0 0 30px #8b5cf6;
+}
+
+/* Buttons */
+.actionBtn{
+    background:linear-gradient(45deg,#8b5cf6,#06b6d4);
+    padding:15px 30px;
+    border-radius:20px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.actionBtn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px cyan;
+}
+
+/* Image Animation */
+.profilePic{
+    transition:.5s;
+}
+
+.profilePic:hover{
+    transform:rotate(8deg) scale(1.1);
+    box-shadow:0 0 30px violet;
+}
+
+/* Fade Animation */
+.fade{
+    animation:fade 1s ease;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+    </style>
+</head>
+<body>
+    <section >
+
+<div class="glass rounded-[40px] p-10 card3d">
+
+    <!-- Profile Header -->
+    <div class="flex flex-col md:flex-row items-center gap-8">
+
+        <center>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            class="w-40 h-40 rounded-full border-4 border-violet-500">
+        </center>
+
+        <div>
+            <h1 class="text-5xl font-bold mb-4">
+                🎓 SmartLearn AR
+            </h1>
+
+            <p class="text-gray-300 text-lg">
+                AI + AR Education Platform
+            </p>
+        </div>
+
+    </div>
+
+    <hr class="my-10 border-slate-700">
+
+
+    <!-- About -->
+    <h2 class="text-3xl font-bold mb-6 text-violet-400">
+        📖 About SmartLearn AR
+    </h2>
+
+    <p class="text-gray-300 leading-8">
+        SmartLearn AR is an AI-powered educational platform designed to
+        make learning easier, interactive and enjoyable. Students can
+        explore Mathematics, Science, Geography, History and many more
+        subjects with the help of Artificial Intelligence and Augmented
+        Reality technology.
+    </p>
+
+
+    <!-- AI Uses -->
+    <h2 class="text-3xl font-bold mt-12 mb-6 text-cyan-400">
+        🤖 AI Features
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-xl font-bold mb-3">
+                AI Tutor
+            </h3>
+
+            <p class="text-gray-300">
+                Ask questions and receive instant explanations.
+            </p>
+        </div>
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-xl font-bold mb-3">
+                AI Recommendations
+            </h3>
+
+            <p class="text-gray-300">
+                Suggests lessons based on interests and progress.
+            </p>
+        </div>
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-xl font-bold mb-3">
+                Quiz Generator
+            </h3>
+
+            <p class="text-gray-300">
+                Creates quizzes automatically for practice.
+            </p>
+        </div>
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-xl font-bold mb-3">
+                Personalized Learning
+            </h3>
+
+            <p class="text-gray-300">
+                Adapts content according to student performance.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- Where To Use -->
+    <h2 class="text-3xl font-bold mt-12 mb-6 text-green-400">
+        🌍 Where Can We Use AI?
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-2xl mb-3">🏫 Education</h3>
+            <p class="text-gray-300">
+                Smart learning and personalized tutoring.
+            </p>
+        </div>
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-2xl mb-3">🏥 Healthcare</h3>
+            <p class="text-gray-300">
+                Disease detection and medical assistance.
+            </p>
+        </div>
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-2xl mb-3">💼 Business</h3>
+            <p class="text-gray-300">
+                Automation and intelligent decision making.
+            </p>
+        </div>
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-2xl mb-3">🚗 Transportation</h3>
+            <p class="text-gray-300">
+                Navigation and autonomous vehicles.
+            </p>
+        </div>
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-2xl mb-3">🌾 Agriculture</h3>
+            <p class="text-gray-300">
+                Crop monitoring and smart farming.
+            </p>
+        </div>
+
+        <div class="glass p-6 rounded-3xl">
+            <h3 class="text-2xl mb-3">🏭 Industry</h3>
+            <p class="text-gray-300">
+                Robots and manufacturing automation.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- Benefits -->
+    <h2 class="text-3xl font-bold mt-12 mb-6 text-yellow-400">
+        ⭐ Benefits of AI in Education
+    </h2>
+
+    <ul class="space-y-4 text-gray-300 text-lg">
+        <li>✅ Personalized Learning Experience</li>
+        <li>✅ 24/7 AI Tutor Assistance</li>
+        <li>✅ Faster Doubt Clarification</li>
+        <li>✅ Interactive AR Learning Models</li>
+        <li>✅ Better Understanding Through Visualization</li>
+        <li>✅ Self-paced Learning Environment</li>
+    </ul>
+
+</div>
+
+</section>
+<script>
+    function showAbout(){
+
+document.getElementById("contentBox").innerHTML=`
+
+<h1 class="text-4xl text-violet-400 mb-6">
+📖 About SmartLearn AR
+</h1>
+
+<p>
+SmartLearn AR is an AI-powered education platform
+that helps students learn through visualization,
+interactive lessons and Augmented Reality.
+</p>
+
+`;
+
+}
+
+
+function showAI(){
+
+document.getElementById("contentBox").innerHTML=`
+
+<h1 class="text-4xl text-cyan-400 mb-6">
+🤖 AI Features
+</h1>
+
+<ul class="space-y-4">
+
+<li>✅ AI Tutor</li>
+
+<li>✅ AI Recommendation System</li>
+
+<li>✅ Quiz Generator</li>
+
+<li>✅ Personalized Learning</li>
+
+<li>✅ Voice Assistant</li>
+
+<li>✅ 24/7 Learning Support</li>
+
+</ul>
+
+`;
+
+}
+
+
+function showBenefits(){
+
+document.getElementById("contentBox").innerHTML=`
+
+<h1 class="text-4xl text-yellow-400 mb-6">
+⭐ Benefits
+</h1>
+
+<ul class="space-y-4">
+
+<li>📚 Better Understanding</li>
+
+<li>🎯 Personalized Learning</li>
+
+<li>⏰ Learn Anytime</li>
+
+<li>🚀 Faster Doubt Clarification</li>
+
+<li>🌐 Interactive AR Models</li>
+
+<li>🤖 Smart AI Assistance</li>
+
+</ul>
+
+`;
+
+}
+
+
+function showUses(){
+
+document.getElementById("contentBox").innerHTML=`
+
+<h1 class="text-4xl text-green-400 mb-6">
+🌍 Applications of AI
+</h1>
+
+<ul class="space-y-4">
+
+<li>🏫 Education</li>
+
+<li>🏥 Healthcare</li>
+
+<li>💼 Business</li>
+
+<li>🚗 Transportation</li>
+
+<li>🌾 Agriculture</li>
+
+<li>🏭 Industry</li>
+
+</ul>
+
+`;
+
+}
+</script>
+</body>
+</html>

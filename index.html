@@ -83,10 +83,11 @@ body{
             <button onclick="showAlert('Home')" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-700">
                 Home
             </button>
-
-            <button onclick="showAlert('Profile')" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700">
+            <a href="Profile.html" target="_blank" class="text-blue-400 >
+            <button  class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700">
                 Profile
             </button>
+            </a>
         </div>
 
     </div>
@@ -146,6 +147,7 @@ Recommended for Science Students
 <p class="text-gray-300">
 Recommended for Mathematics
 </p>
+
 </div>
 
 <div class="glass p-6 rounded-3xl">
@@ -180,10 +182,12 @@ Subjects
         Statistics and Calculus with AI guidance.
     </p>
 
-    <button onclick="openMath()"
-    class="bg-violet-600 px-5 py-2 rounded-xl">
+    <a href="Calculator.html" target="_blank" class="text-blue-400 hover:underline"><button 
+
+        class="bg-blue-600 px-5 py-2 rounded-xl">
         Explore
     </button>
+</a>
 </div>
 
 
@@ -261,17 +265,20 @@ Explore planets, stars and galaxies.
 
 <div class="flex flex-wrap gap-4">
 
-<button
-onclick="openLesson()"
-class="bg-violet-600 px-6 py-3 rounded-xl glow">
-Read Lesson
-</button>
+<a href ="https://glorian.org/books/light-from-darkness/the-solar-system-ors?cmp_id=16103052678&adg_id=151465082587&kwd=&device=c&gad_source=1&gad_campaignid=16103052678&gbraid=0AAAAADyZ-CYYtOAiLRP44ZuHNnZJdHZuH&gclid=CjwKCAjwuuPRBhAnEiwA2Ji8eqBOJsp-A9qmS-T8DLxXe0mf1xblFYnFrhY2tBiQWAt7r-TK-6KG_BoCvu8QAvD_BwE" target="_blank" class="text-blue-400 hover:underline">
+    <button
+    
+    class="bg-violet-600 px-6 py-3 rounded-xl glow">
+    Read Lesson
+    </button>
+</a>
 
-<button
-onclick="openAR()"
-class="bg-cyan-600 px-6 py-3 rounded-xl glow">
-AR View
-</button>
+<a href ="https://www.youtube.com/watch?v=zkCKx3fpk4Q" target="_blank" class="text-blue-400 hover:underline">
+    <button
+    class="bg-cyan-600 px-6 py-3 rounded-xl glow">
+    AR View
+    </button>
+</a>
 
 </div>
 
@@ -439,7 +446,7 @@ alert("🤖 No exact match.\nShowing popular courses.");
 
 }
 function openLesson(){
-    alert("Solar System Lesson Opened");
+    alert("Click OK to open the lesson");
 }
 
 function openAR(){
