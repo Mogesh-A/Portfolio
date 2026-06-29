@@ -5,76 +5,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile </title>
     <style>
-        /* Glass Effect */
-.glass{
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.1);
-    box-shadow:0 8px 30px rgba(0,0,0,.3);
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top, #3b076e, #0b1226);
+            color: #e2e8f0;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .card3d {
+            width: 100%;
+            max-width: 1120px;
+            padding: 2.5rem;
+            border-radius: 40px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .rounded-3xl {
+            border-radius: 24px;
+        }
+
+        .rounded-40 {
+            border-radius: 40px;
+        }
+
+        .p-10 {
+            padding: 2.5rem;
+        }
+
+        .p-6 {
+            padding: 1.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mt-12 {
+            margin-top: 3rem;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1.05;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 1.1;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 1.2;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .text-gray-300 {
+            color: #d1d5db;
+        }
+
+        .text-violet-400 {
+            color: #a78bfa;
+        }
+
+        .text-cyan-400 {
+            color: #67e8f9;
+        }
+
+        .text-green-400 {
+            color: #4ade80;
+        }
+
+        .text-yellow-400 {
+            color: #facc15;
+        }
+
+        .leading-8 {
+            line-height: 2rem;
+        }
+
+        .border-4 {
+            border-width: 4px;
+        }
+
+        .border-violet-500 {
+            border-color: #8b5cf6;
+        }
+
+        .border-slate-700 {
+            border-color: #334155;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .gap-6 {
+            gap: 1.5rem;
+        }
+
+        .md\:flex-row {
+            flex-direction: row;
+        }
+
+        .md\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .md\:grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        @media (max-width: 768px) {
+            .md\:flex-row {
+                flex-direction: column;
+            }
+
+            .md\:grid-cols-2,
+            .md\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card3d{
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* 3D Card */
-.card3d{
+.grid .glass{
     transition:.4s;
-    transform-style:preserve-3d;
+    cursor:pointer;
+}
+
+.grid .glass:hover{
+    transform:translateY(-12px) scale(1.05);
+    background:rgba(255,255,255,.15);
+    box-shadow:0 15px 40px rgba(0,255,255,.35);
 }
 
 .card3d:hover{
-    transform:
-    perspective(1000px)
-    rotateX(5deg)
-    rotateY(-5deg)
-    translateY(-10px);
-
-    box-shadow:0 0 30px #8b5cf6;
+    transform: perspective(1200px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+    box-shadow:0 30px 60px rgba(0,0,0,.5);
+}
+img{
+    animation:float 3s ease-in-out infinite;
 }
 
-/* Buttons */
-.actionBtn{
-    background:linear-gradient(45deg,#8b5cf6,#06b6d4);
-    padding:15px 30px;
-    border-radius:20px;
-    font-size:18px;
-    font-weight:bold;
-    transition:.3s;
+@keyframes float{
+
+0%{
+transform:translateY(0px);
 }
 
-.actionBtn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 25px cyan;
+50%{
+transform:translateY(-12px);
 }
 
-/* Image Animation */
-.profilePic{
-    transition:.5s;
+100%{
+transform:translateY(0px);
 }
 
-.profilePic:hover{
-    transform:rotate(8deg) scale(1.1);
-    box-shadow:0 0 30px violet;
+}
+h1{
+    animation:glow 2s infinite alternate;
 }
 
-/* Fade Animation */
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px #8b5cf6;
+}
+
+to{
+text-shadow:0 0 25px cyan;
+}
+
+}
 .fade{
-    animation:fade 1s ease;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
 }
 
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+button{
+position:relative;
+overflow:hidden;
+}
+
+button::after{
+content:"";
+position:absolute;
+width:0;
+height:0;
+border-radius:50%;
+background:white;
+opacity:.5;
+transform:translate(-50%,-50%);
+transition:.5s;
+}
+
+button:active::after{
+width:300px;
+height:300px;
 }
     </style>
 </head>
 <body>
     <section >
 
-<div class="glass rounded-[40px] p-10 card3d">
+<div class="glass rounded-40 p-10 card3d">
 
     <!-- Profile Header -->
     <div class="flex flex-col md:flex-row items-center gap-8">
@@ -85,9 +298,7 @@
         </center>
 
         <div>
-            <h1 class="text-5xl font-bold mb-4">
-                🎓 SmartLearn AR
-            </h1>
+           <h1 id="typing"></h1>
 
             <p class="text-gray-300 text-lg">
                 AI + AR Education Platform
@@ -96,8 +307,7 @@
 
     </div>
 
-    <hr class="my-10 border-slate-700">
-
+    <hr class="my-<h1 id="typing"></h1>
 
     <!-- About -->
     <h2 class="text-3xl font-bold mb-6 text-violet-400">
@@ -337,6 +547,50 @@ document.getElementById("contentBox").innerHTML=`
 `;
 
 }
+const elements=document.querySelectorAll(".glass");
+
+window.addEventListener("scroll",()=>{
+
+elements.forEach(el=>{
+
+const top=el.getBoundingClientRect().top;
+
+if(top<window.innerHeight-100){
+
+el.classList.add("show");
+
+}
+
+});
+
+});
+
+elements.forEach(el=>el.classList.add("fade"));
+const text="🎓 SmartLearn AR";
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(type,120);
+
+}
+
+}
+
+type();
+document.addEventListener("mousemove",(e)=>{
+
+document.body.style.background=
+`radial-gradient(circle at ${e.clientX}px ${e.clientY}px,#5b21b6,#0b1226)`;
+
+});
+
 </script>
 </body>
 </html>
