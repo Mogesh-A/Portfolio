@@ -282,9 +282,45 @@ button:active::after{
 width:300px;
 height:300px;
 }
+.btn{
+    padding:15px 35px;
+    font-size:18px;
+    font-weight:bold;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(45deg,#8b5cf6,#06b6d4);
+    transition:.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.btn:hover{
+    transform:translateY(-8px) scale(1.08);
+    box-shadow:0 15px 35px cyan;
+}
     </style>
 </head>
 <body>
+    <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:40px 0;">
+
+<button onclick="showAbout()" class="btn">
+📖 About
+</button>
+
+<button onclick="showAI()" class="btn">
+🤖 AI Features
+</button>
+
+<button onclick="showBenefits()" class="btn">
+⭐ Benefits
+</button>
+
+<button onclick="showUses()" class="btn">
+🌍 AI Uses
+</button>
+
+</div>
     <section >
 
 <div class="glass rounded-40 p-10 card3d">
@@ -296,30 +332,31 @@ height:300px;
             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
             class="w-40 h-40 rounded-full border-4 border-violet-500">
         </center>
+<h1 class="text-5xl font-bold text-violet-400">
+🎓 Welcome to Smartesion AR
+</h1>
 
-        <div>
-           <h1 id="typing"></h1>
-
-            <p class="text-gray-300 text-lg">
-                AI + AR Education Platform
-            </p>
-        </div>
+<p class="text-xl text-gray-300" style="margin-top:15px;">
+Learn Smarter • Visualize Better • Build Your Future with AI & AR
+</p>
+        
 
     </div>
 
-    <hr class="my-<h1 id="typing"></h1>
+    <hr class="my-8">
+    
 
     <!-- About -->
     <h2 class="text-3xl font-bold mb-6 text-violet-400">
         📖 About SmartLearn AR
     </h2>
 
-    <p class="text-gray-300 leading-8">
-        SmartLearn AR is an AI-powered educational platform designed to
-        make learning easier, interactive and enjoyable. Students can
-        explore Mathematics, Science, Geography, History and many more
-        subjects with the help of Artificial Intelligence and Augmented
-        Reality technology.
+    <p class="text-gray-300 leading-8" style="text-align:justify; margin-bottom:20px; line-height:1.8; font-size:1.1rem; font-style:italic">
+       
+
+Smartesion AR is an innovative educational platform that combines the power of Artificial Intelligence (AI) and Augmented Reality (AR) to create a modern and interactive learning experience. The AI system acts as a personal tutor that understands students' questions, provides instant answers, explains complex concepts step by step, and recommends personalized learning paths based on individual performance. At the same time, Augmented Reality transforms traditional lessons into immersive 3D experiences, allowing students to visualize objects, scientific models, historical monuments, mathematical concepts, and real-world scenarios directly from their devices. This combination makes learning more engaging, enjoyable, and easier to understand.
+
+Smartesion AR can be used by school students, college students, teachers, and self-learners to improve knowledge in subjects such as Mathematics, Science, Programming, History, Geography, and many others. Students can practice quizzes, solve coding problems, receive AI-generated explanations, and explore interactive AR models anytime and anywhere. Teachers can also use the platform to create smart learning materials, monitor student progress, and provide personalized guidance. By integrating AI and AR technologies, Smartesion AR helps improve understanding, increases student confidence, saves learning time, and creates an intelligent education environment where everyone can learn effectively at their own pace.
     </p>
 
 
